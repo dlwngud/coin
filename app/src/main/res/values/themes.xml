@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.Coin" parent="Base.Theme.Coin" />
+
+    <style name="Theme.Coin.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/splash_image</item>
+        <item name="postSplashScreenTheme">@style/Theme.Coin</item>
+    </style>
 </resources>
