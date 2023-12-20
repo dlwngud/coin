@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">coin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="coinList">코인리스트</string>
+    <string name="community">커뮤니티</string>
+    <string name="myInformation">내 정보</string>
 </resources>
