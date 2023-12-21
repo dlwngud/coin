@@ -1,17 +1,19 @@
-package com.wngud.coin
+package com.wngud.coin.view.myinformation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-class TotalTabFragment : Fragment() {
+import com.wngud.coin.R
+
+class MyInformationFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_total_tab, container, false)
+        return inflater.inflate(R.layout.fragment_my_information, container, false)
     }
 }

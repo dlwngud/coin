@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.wngud.coin.CoinListFragment"
+        android:name="com.wngud.coin.view.home.CoinListFragment"
         android:label="fragment_coin_list"
         tools:layout="@layout/fragment_coin_list" />
     <fragment
         android:id="@+id/navigation_community"
-        android:name="com.wngud.coin.CommunityFragment"
+        android:name="com.wngud.coin.view.community.CommunityFragment"
         android:label="fragment_community"
         tools:layout="@layout/fragment_community" />
     <fragment
         android:id="@+id/navigation_information"
-        android:name="com.wngud.coin.MyInformationFragment"
+        android:name="com.wngud.coin.view.myinformation.MyInformationFragment"
         android:label="fragment_my_information"
         tools:layout="@layout/fragment_my_information" />
 </navigation>
