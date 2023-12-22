@@ -26,3 +26,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+// <a href="https://www.flaticon.com/kr/free-icons/-" title="비트 코인 아이콘">비트 코인 아이콘  제작자: YI-PIN - Flaticon</a>

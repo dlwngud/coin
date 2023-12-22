@@ -23,4 +23,14 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tv_coin_name_kr"
         app:layout_constraintTop_toBottomOf="@+id/tv_coin_name_kr" />
+
+    <ImageView
+        android:id="@+id/iv_interest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_heart_gray" />
 </androidx.constraintlayout.widget.ConstraintLayout>

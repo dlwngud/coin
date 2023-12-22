@@ -4,4 +4,5 @@ data class CoinInfo(
     val market: String,
     val korean_name: String,
     val english_name: String,
+    val isInteresting: Boolean
 )
