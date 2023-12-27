@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.wngud.coin.model.CoinInfo
 import com.wngud.coin.model.CurrentCoinPrice
 import com.wngud.coin.repository.CoinListRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CoinListViewModel(private val coinListRepository: CoinListRepository) :
     ViewModel() {
@@ -16,28 +18,31 @@ class CoinListViewModel(private val coinListRepository: CoinListRepository) :
     private val _coins = MutableLiveData<List<CoinInfo>>()
     val coins: LiveData<List<CoinInfo>> = _coins
 
-    private val _coinsPrice = MutableLiveData<List<CurrentCoinPrice>>()
-    val coinsPrice: LiveData<List<CurrentCoinPrice>> = _coinsPrice
-
     init {
         loadCoinList()
     }
 
     private fun loadCoinList() = viewModelScope.launch {
-        val coinList = coinListRepository.getCoinNameList()
-        _coins.value = coinList
+        var coinList = coinListRepository.getCoinNameList().toMutableList()
         var coinNames = ""
         for (coin in coinList) {
             coinNames += coin.market + ","
         }
         coinNames = coinNames.trimEnd(',')
-        Log.d("qwe", coinList.toString())
-        loadCoinsPrice(coinNames)
-    }
+        withContext(Dispatchers.Default) {
+            val coinsPrice = coinListRepository.getCoinsPrice(coinNames)
+            coinList.forEachIndexed { index, coinInfo ->
+                coinList[index] = CoinInfo(
+                    market = coinInfo.market,
+                    korean_name = coinInfo.korean_name,
+                    english_name = coinInfo.english_name,
+                    isInteresting = coinInfo.isInteresting,
+                    price = coinsPrice[index]
+                )
+            }
+        }
 
-    fun loadCoinsPrice(market: String) = viewModelScope.launch {
-        val coinsPrice = coinListRepository.getCoinsPrice(market)
-        _coinsPrice.value = coinsPrice
-        Log.d("qwe", coinsPrice.toString())
+        _coins.value = coinList
+        Log.d("qwe", coinList.toString())
     }
 }
