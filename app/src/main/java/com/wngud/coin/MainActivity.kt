@@ -2,11 +2,14 @@ package com.wngud.coin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wngud.coin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +43,10 @@ class MainActivity : AppCompatActivity() {
                     dialogBuilder.setPositiveButton("로그인") { dialog, _ ->
                         // 로그인 버튼 클릭 시 처리할 내용
                         // 예: 로그인 화면으로 이동
+                        findNavController(R.id.container_main).navigate(R.id.loginFragment)
+                        val bottomNavigationView = this@MainActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+                        bottomNavigationView?.visibility = View.GONE
+
                         dialog.dismiss()
                     }
 

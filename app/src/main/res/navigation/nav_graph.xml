@@ -9,15 +9,32 @@
         android:id="@+id/navigation_home"
         android:name="com.wngud.coin.view.home.CoinListFragment"
         android:label="fragment_coin_list"
-        tools:layout="@layout/fragment_coin_list" />
+        tools:layout="@layout/fragment_coin_list" >
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_community"
         android:name="com.wngud.coin.view.community.CommunityFragment"
         android:label="fragment_community"
-        tools:layout="@layout/fragment_community" />
+        tools:layout="@layout/fragment_community" >
+        <action
+            android:id="@+id/action_community_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_information"
         android:name="com.wngud.coin.view.myinformation.MyInformationFragment"
         android:label="fragment_my_information"
-        tools:layout="@layout/fragment_my_information" />
+        tools:layout="@layout/fragment_my_information" >
+        <action
+            android:id="@+id/action_information_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.wngud.coin.view.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
