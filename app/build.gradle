@@ -72,4 +72,7 @@ dependencies {
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
+
+    // kakao login
+    implementation "com.kakao.sdk:v2-user:2.19.0"
 }
