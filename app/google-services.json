@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "183275175739",
+    "project_id": "coin-28e9e",
+    "storage_bucket": "coin-28e9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183275175739:android:5f70da7e73689a7b7c811e",
+        "android_client_info": {
+          "package_name": "com.wngud.coin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhPffXwnsVfYJ05zkmbEjNPpzvOY6ZTx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
