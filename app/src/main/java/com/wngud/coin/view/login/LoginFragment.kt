@@ -27,14 +27,6 @@ class LoginFragment : Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigateUp()
-
-            val bottomNavigationView =
-                activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
-            bottomNavigationView?.visibility = View.VISIBLE
-        }
-
         binding.run {
             ivKakaoLogin.setOnClickListener {
                 // 카카오계정으로 로그인 공통 callback 구성
@@ -44,6 +36,33 @@ class LoginFragment : Fragment() {
                         Log.e(TAG, "카카오계정으로 로그인 실패", error)
                     } else if (token != null) {
                         Log.i(TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
+
+                        // 사용자 정보 요청 (기본)
+                        UserApiClient.instance.me { user, error ->
+                            if (error != null) {
+                                Log.e(TAG, "사용자 정보 요청 실패", error)
+                            }
+                            else if (user != null) {
+                                Log.i(TAG, "사용자 정보 요청 성공" +
+                                        "\n회원번호: ${user.id}" +
+                                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+                            }
+                        }
+
+                        // 토큰 정보 보기
+                        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+                            if (error != null) {
+                                Log.e(TAG, "토큰 정보 보기 실패", error)
+                            }
+                            else if (tokenInfo != null) {
+                                Log.i(TAG, "토큰 정보 보기 성공" +
+                                        "\n회원번호: ${tokenInfo.id}" +
+                                        "\n만료시간: ${tokenInfo.expiresIn} 초")
+                            }
+                        }
+
+                        finishLogin()
                     }
                 }
 
@@ -66,6 +85,7 @@ class LoginFragment : Fragment() {
                             )
                         } else if (token != null) {
                             Log.i(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
+                            finishLogin()
                         }
                     }
                 } else {
@@ -78,5 +98,13 @@ class LoginFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun finishLogin() {
+        findNavController().navigateUp()
+
+        val bottomNavigationView =
+            activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView?.visibility = View.VISIBLE
     }
 }
