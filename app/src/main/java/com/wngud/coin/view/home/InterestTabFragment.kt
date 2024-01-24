@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wngud.coin.R
 import com.wngud.coin.ViewModelFactory
@@ -31,10 +29,7 @@ class InterestTabFragment : Fragment() {
 
         binding.run {
             btnLogin.setOnClickListener {
-                it.findNavController().navigate(R.id.action_home_to_login)
-
-                val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                bottomNavigationView?.visibility = View.GONE
+                it.findNavController().navigate(R.id.action_main_to_login)
             }
         }
 

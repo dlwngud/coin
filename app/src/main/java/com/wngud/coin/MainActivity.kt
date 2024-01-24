@@ -31,44 +31,6 @@ class MainActivity : AppCompatActivity() {
             val navHostFragment =
                 supportFragmentManager.findFragmentById(R.id.container_main) as NavHostFragment
             val navController = navHostFragment.findNavController()
-            bottomNavigation.setupWithNavController(navController)
-
-            bottomNavigation.setOnItemSelectedListener { menuItem ->
-                if(menuItem.itemId == R.id.navigation_community || menuItem.itemId == R.id.navigation_information){
-                    val dialogBuilder = AlertDialog.Builder(this@MainActivity)
-                    dialogBuilder.setTitle("로그인이 필요합니다.")
-                    dialogBuilder.setMessage("한 번만 하면 됩니다.")
-                    dialogBuilder.setCancelable(true)
-
-                    dialogBuilder.setNegativeButton("취소") { dialog, _ ->
-                        // 취소 버튼 클릭 시 처리할 내용
-                        dialog.dismiss()
-                    }
-
-                    dialogBuilder.setPositiveButton("로그인") { dialog, _ ->
-                        // 로그인 버튼 클릭 시 처리할 내용
-                        // 예: 로그인 화면으로 이동
-                        findNavController(R.id.container_main).navigate(R.id.loginFragment)
-                        val bottomNavigationView = this@MainActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                        bottomNavigationView?.visibility = View.GONE
-
-                        dialog.dismiss()
-                    }
-
-                    val dialog = dialogBuilder.create()
-                    dialog.show()
-                    false
-                }else{
-                    when(menuItem.itemId){
-                        R.id.navigation_home -> {
-                            true
-                        }
-                        else -> {
-                            false
-                        }
-                    }
-                }
-            }
         }
     }
 }
